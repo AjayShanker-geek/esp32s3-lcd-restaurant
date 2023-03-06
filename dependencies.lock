@@ -1,0 +1,63 @@
+dependencies:
+  espressif/es7210:
+    component_hash: f6fac5afbf43337f715a9665b80c2db1912292fcb63237bb56515ed94b3012e2
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.1
+  espressif/es8311:
+    component_hash: eacbe7cb7f6993eb0f439121a56663cdfbf95925e7ddf5d2ed5aa640bed476fd
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.0
+  espressif/esp32_s3_lcd_ev_board:
+    component_hash: 27f4ad14aa9467a6c6899e3ad224750f84b8c6336c916a67f3a9ff32402eece0
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.0
+  espressif/esp_io_expander:
+    component_hash: fbc0de4082fc7c207dc98a93a0ed83d1a929a4ecee83cc567afb406f3ee6d4a6
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.1
+  espressif/esp_io_expander_tca9554:
+    component_hash: e9e49ddb1038c2b54b13c51b5e3e6dbdd10a878959c8ab0e0a7c8206316add61
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.1
+  espressif/esp_lcd_touch:
+    component_hash: 805a51c99c8b532ee762a77a03a49b9f5ca2b45413faea63d2146ec85cfcdee2
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.3
+  espressif/esp_lcd_touch_ft5x06:
+    component_hash: 598c5457eeb1fd3dc2096503e36b8a7de2801c584136be4616f9ab35b65db796
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.4
+  espressif/esp_lcd_touch_gt1151:
+    component_hash: 1cb72a3ea1baef64d4ceb0f7ff423905ff6086d741d1d9fc69b2b616d5ef17c1
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.4
+  idf:
+    component_hash: null
+    source:
+      type: idf
+    version: 5.0.1
+  lvgl/lvgl:
+    component_hash: 7b7ee85e48c2eb35bb242a8c7e0e4cd702e150541afb3f69089fb7ba81554d14
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 8.3.0
+manifest_hash: e801644f28b12bc4345382ad6162a424f684ff2ca545dd2d1a83d81a22e3a5ca
+target: esp32s3
+version: 1.0.0
