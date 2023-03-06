@@ -1,4 +1,4 @@
-# Install script for directory: /Users/ajayshanker/Developer/iot/lvgl_demos/managed_components/espressif__esp_lcd_touch_gt1151
+# Install script for directory: /Users/ajayshanker/Developer/iot/lvgl_demos/components/espressif__esp_lcd_touch_gt1151
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

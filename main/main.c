@@ -18,27 +18,10 @@ void app_main(void) {
   bsp_i2c_init();
   lv_disp_t *disp = bsp_display_start();
 
-#if CONFIG_BSP_DISPLAY_LVGL_AVOID_TEAR
-  ESP_LOGI(TAG, "Avoid lcd tearing effect");
-#if CONFIG_BSP_DISPLAY_LVGL_FULL_REFRESH
-  ESP_LOGI(TAG, "LVGL full-refresh");
-#elif CONFIG_BSP_DISPLAY_LVGL_DIRECT_MODE
-  ESP_LOGI(TAG, "LVGL direct-mode");
-#endif
-#endif
-
-  ESP_LOGI(TAG, "Display LVGL demo");
+  // ESP_LOGI(TAG, "Display LVGL demo");
   bsp_display_lock(0);
   lv_demo_widgets(); /* A widgets example */
 
-  // compare different settings. */
-#if CONFIG_BSP_LCD_SUB_BOARD_800_480
-  // ui_printer_init();         /* A demo to show virtual printer */
-#ifndef CONFIG_BSP_DISPLAY_LVGL_AVOID_TEAR
-  // bsp_display_rotate(disp, LV_DISP_ROT_90); /* Rotate screen from 800*480 to
-
-#endif
-#endif
   bsp_display_unlock();
 
 #if LOG_MEM_INFO
@@ -55,6 +38,8 @@ void app_main(void) {
             heap_caps_get_free_size(MALLOC_CAP_SPIRAM),
             heap_caps_get_total_size(MALLOC_CAP_SPIRAM));
     ESP_LOGI("MEM", "%s", buffer);
+
+    // sprintf("Ajay");
 
     vTaskDelay(pdMS_TO_TICKS(500));
   }
