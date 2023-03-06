@@ -8,8 +8,7 @@
 #include "esp_log.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-// #include "lv_demos.h"
-#include "widgets/lv_demo_widgets.h"
+#include "lv_demos.h"
 
 static char *TAG = "app_main";
 
