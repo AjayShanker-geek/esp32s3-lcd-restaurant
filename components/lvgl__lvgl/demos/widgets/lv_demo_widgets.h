@@ -13,6 +13,8 @@ extern "C" {
 /*********************
  *      INCLUDES
  *********************/
+#include <stdio.h>
+
 #include "../lv_demos.h"
 
 /*********************
