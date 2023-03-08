@@ -6,7 +6,8 @@
     "*.tex": "latex",
     "__config": "cpp",
     "__locale": "c",
-    "system_error": "c"
+    "system_error": "c",
+    "locale": "c"
   },
   "idf.openOcdConfigs": ["board/esp32s3-bridge.cfg"]
 }
