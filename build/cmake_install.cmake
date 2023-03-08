@@ -1,4 +1,4 @@
-# Install script for directory: /Users/ajayshanker/Developer/iot/lvgl_demos
+# Install script for directory: /Users/ajayshanker/Developer/iot/esp32-lcd-restaurant
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/ajayshanker/Developer/iot/lvgl_demos/build/esp-idf/cmake_install.cmake")
+  include("/Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/build/esp-idf/cmake_install.cmake")
 
 endif()
 
@@ -51,5 +51,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/ajayshanker/Developer/iot/lvgl_demos/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

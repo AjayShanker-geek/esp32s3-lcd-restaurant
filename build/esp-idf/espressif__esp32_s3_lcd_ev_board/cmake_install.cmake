@@ -1,4 +1,4 @@
-# Install script for directory: /Users/ajayshanker/Developer/iot/lvgl_demos/components/espressif__esp32_s3_lcd_ev_board
+# Install script for directory: /Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/components/espressif__esp32_s3_lcd_ev_board
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

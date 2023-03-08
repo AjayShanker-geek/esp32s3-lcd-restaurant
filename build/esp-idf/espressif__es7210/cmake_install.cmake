@@ -1,4 +1,4 @@
-# Install script for directory: /Users/ajayshanker/Developer/iot/lvgl_demos/managed_components/espressif__es7210
+# Install script for directory: /Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/managed_components/espressif__es7210
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

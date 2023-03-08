@@ -17,8 +17,7 @@
 /*********************
  *      DEFINES
  *********************/
-static char buffer[128]; /* Make sure buffer is enough for `sprintf` */
-
+uint32_t selected_tabel = -1;
 /**********************
  *      TYPEDEFS
  **********************/
@@ -203,16 +202,16 @@ void lv_demo_widgets(void) {
     lv_obj_align_to(label, logo, LV_ALIGN_OUT_RIGHT_BOTTOM, 10, 0);
   }
 
-  lv_obj_t* t1 = lv_tabview_add_tab(tv, "Profile");
-  lv_obj_t* t2 = lv_tabview_add_tab(tv, "Analytics");
-  lv_obj_t* t3 = lv_tabview_add_tab(tv, "Shop");
-  profile_create(t1);
-  analytics_create(t2);
-  shop_create(t3);
+  // lv_obj_t* t1 = lv_tabview_add_tab(tv, "Profile");
+  // lv_obj_t* t2 = lv_tabview_add_tab(tv, "Analytics");
+  // lv_obj_t* t3 = lv_tabview_add_tab(tv, "Shop");
+  // profile_create(t1);
+  // analytics_create(t2);
+  // shop_create(t3);
 
-  // lv_obj_t* t1 = lv_tabview_add_tab(tv, "Restaurant");
-  // lv_obj_t* t2 = lv_tabview_add_tab(tv, "Settings");
-  // restaurant_create(t1);
+  lv_obj_t* t1 = lv_tabview_add_tab(tv, "Restaurant");
+  lv_obj_t* t2 = lv_tabview_add_tab(tv, "Settings");
+  restaurant_create(t1);
 
   // color_changer_create(tv);
 }
@@ -221,28 +220,109 @@ void lv_demo_widgets(void) {
  *   STATIC FUNCTIONS
  **********************/
 
-static void table1_event_cb(lv_event_t* e) {
-  LV_UNUSED(e);
-  sprintf(buffer, "Table 1");
+static void table1_event_cb(lv_obj_t* obj, lv_event_t event) {
+  printf("Clicked\n");
+}
+
+static void event_cb(lv_event_t* e) {
+  lv_event_code_t code = lv_event_get_code(e);
+  lv_obj_t* obj = lv_event_get_target(e);
+  if (code == LV_EVENT_DRAW_PART_BEGIN) {
+    lv_obj_draw_part_dsc_t* dsc = lv_event_get_draw_part_dsc(e);
+
+    /*When the button matrix draws the buttons...*/
+    if (dsc->class_p == &lv_btnmatrix_class &&
+        dsc->type == LV_BTNMATRIX_DRAW_PART_BTN) {
+      /*Change the draw descriptor of the 2nd button*/
+      dsc->rect_dsc->radius = 0x06;
+      if (dsc->id == 7) {
+        dsc->rect_dsc->bg_color = lv_palette_main(LV_PALETTE_GREEN);
+      } else if (dsc->id == 6) {
+        dsc->rect_dsc->bg_color = lv_palette_main(LV_PALETTE_RED);
+      } else if (lv_btnmatrix_get_selected_btn(obj) == dsc->id &&
+                 dsc->id != 7) {
+        dsc->rect_dsc->bg_color = lv_palette_main(LV_PALETTE_LIGHT_GREEN);
+        // printf("%i\n", dsc->id);
+      } else
+        dsc->rect_dsc->bg_color = lv_palette_main(LV_PALETTE_LIGHT_BLUE);
+
+      dsc->label_dsc->color = lv_color_white();
+    }
+  } else if (code == LV_EVENT_VALUE_CHANGED) {
+    uint32_t id = lv_btnmatrix_get_selected_btn(obj);
+    const char* txt = lv_btnmatrix_get_btn_text(obj, id);
+
+    printf("%s was pressed\n", txt);
+  }
+  // if (code == LV_EVENT_DRAW_PART_END) {
+  //   lv_obj_draw_part_dsc_t* dsc = lv_event_get_draw_part_dsc(e);
+
+  //   /*When the button matrix draws the buttons...*/
+  //   if (dsc->class_p == &lv_btnmatrix_class &&
+  //       dsc->type == LV_BTNMATRIX_DRAW_PART_BTN) {
+  //     /*Add custom content to the 4th button when the button itself was
+  //     drawn*/ if (dsc->id == 7) {
+  //       printf("Send\n");
+  //       // LV_IMG_DECLARE(table_top_view);
+  //       // lv_img_header_t header;
+  //       // lv_res_t res = lv_img_decoder_get_info(&table_top_view, &header);
+  //       // if (res != LV_RES_OK) return;
+
+  //       // lv_area_t a;
+  //       // a.x1 = dsc->draw_area->x1 +
+  //       //        (lv_area_get_width(dsc->draw_area) - header.w) / 2;
+  //       // a.x2 = a.x1 + header.w - 1;
+  //       // a.y1 = dsc->draw_area->y1 +
+  //       //        (lv_area_get_height(dsc->draw_area) - header.h) / 2;
+  //       // a.y2 = a.y1 + header.h - 1;
+
+  //       // lv_draw_img_dsc_t img_draw_dsc;
+  //       // lv_draw_img_dsc_init(&img_draw_dsc);
+  //       // img_draw_dsc.recolor = lv_color_black();
+  //       // if (lv_btnmatrix_get_selected_btn(obj) == dsc->id)
+  //       //   img_draw_dsc.recolor_opa = LV_OPA_30;
+
+  //       // lv_draw_img(dsc->draw_ctx, &img_draw_dsc, &a, &table_top_view);
+  //     }
+  //   }
+  // }
+}
+
+static const char* btnm_map[] = {"Table 1", "Table 2", "Table 3", "\n",
+                                 "Table 4", "Table 5", "Table 6", "\n",
+                                 "Cancel",  "Send",    ""};
+
+/**
+ * Add custom drawer to the button matrix to customize buttons one by one
+ */
+void lv_btnmatrix(lv_obj_t* parent) {
+  lv_obj_t* btnm = lv_btnmatrix_create(lv_scr_act());
+  lv_btnmatrix_set_map(btnm, btnm_map);
+  lv_obj_add_event_cb(btnm, event_cb, LV_EVENT_ALL, NULL);
+  lv_obj_center(btnm);
+  lv_obj_set_size(btnm, 450, 250);
 }
 
 static void restaurant_create(lv_obj_t* parent) {
-  lv_obj_t* panel1 = lv_obj_create(parent);
-  lv_obj_set_height(panel1, LV_SIZE_CONTENT);
+  // lv_obj_t* panel1 = lv_obj_create(parent);
+  // lv_obj_set_height(panel1, LV_SIZE_CONTENT);
 
-  LV_IMG_DECLARE(table_top_view);
-  // lv_obj_t* table1 = lv_img_create(panel1);
-  // lv_img_set_src(table1, &table_top_view);
+  // LV_IMG_DECLARE(table_top_view);
 
-  // lv_obj_t* table2 = lv_img_create(panel1);
-  // lv_img_set_src(table2, &table_top_view);
+  lv_btnmatrix(parent);
 
-  lv_obj_t* icon;
-  icon = lv_img_create(panel1);
-  lv_img_set_src(icon, &table_top_view);
-  lv_obj_set_grid_cell(icon, LV_GRID_ALIGN_START, 0, 0, LV_GRID_ALIGN_CENTER, 0,
-                       1);
-  lv_obj_add_event_cb(icon, table1_event_cb, LV_EVENT_CLICKED, NULL);
+  // lv_obj_t* icon;
+  // icon = lv_imgbtn_create(panel1);
+  // lv_imgbtn_set_src(icon, LV_IMGBTN_STATE_RELEASED, &table_top_view,
+  //                   &table_top_view, &table_top_view);
+  // lv_obj_add_style(icon, &style_def, 0);
+  // lv_obj_add_style(icon, &style_pr, LV_STATE_PRESSED);
+  // lv_obj_set_grid_cell(icon, LV_GRID_ALIGN_START, 0, 0,
+  // LV_GRID_ALIGN_CENTER, 0,
+  //                      1);
+  // lv_obj_t* label = lv_label_create(icon);
+  // lv_label_set_text(label, "Table 1");
+  // lv_obj_add_event_cb(icon, table1_event_cb, LV_EVENT_CLICKED, NULL);
 
   if (disp_size == DISP_LARGE) {
     static lv_coord_t grid_main_col_dsc[] = {LV_GRID_FR(1), LV_GRID_FR(1),
@@ -272,15 +352,14 @@ static void restaurant_create(lv_obj_t* parent) {
 
     lv_obj_set_grid_dsc_array(parent, grid_main_col_dsc, grid_main_row_dsc);
 
-    lv_obj_set_grid_cell(panel1, LV_GRID_ALIGN_STRETCH, 0, 2,
-                         LV_GRID_ALIGN_CENTER, 0, 1);
+    // lv_obj_set_grid_cell(panel1, LV_GRID_ALIGN_STRETCH, 0, 2,
+    //                      LV_GRID_ALIGN_CENTER, 0, 1);
 
-    lv_obj_set_grid_dsc_array(panel1, grid_1_col_dsc, grid_1_row_dsc);
+    // lv_obj_set_grid_dsc_array(panel1, grid_1_col_dsc, grid_1_row_dsc);
     // lv_obj_set_grid_cell(table1, LV_GRID_ALIGN_CENTER, 0, 1,
     //                      LV_GRID_ALIGN_CENTER, 0, 5);
     // lv_obj_set_grid_cell(table2, LV_GRID_ALIGN_CENTER, 0, 1,
     //                      LV_GRID_ALIGN_CENTER, 0, 5);
-
   } else if (disp_size == DISP_MEDIUM) {
     static lv_coord_t grid_main_col_dsc[] = {LV_GRID_FR(1), LV_GRID_FR(1),
                                              LV_GRID_TEMPLATE_LAST};
@@ -313,11 +392,10 @@ static void restaurant_create(lv_obj_t* parent) {
                                           LV_GRID_TEMPLATE_LAST};
 
     lv_obj_set_grid_dsc_array(parent, grid_main_col_dsc, grid_main_row_dsc);
-    lv_obj_set_grid_cell(panel1, LV_GRID_ALIGN_STRETCH, 0, 2,
-                         LV_GRID_ALIGN_CENTER, 0, 1);
+    // lv_obj_set_grid_cell(panel1, LV_GRID_ALIGN_STRETCH, 0, 2,
+    //                      LV_GRID_ALIGN_CENTER, 0, 1);
 
-    lv_obj_set_grid_dsc_array(panel1, grid_1_col_dsc, grid_1_row_dsc);
-
+    // lv_obj_set_grid_dsc_array(panel1, grid_1_col_dsc, grid_1_row_dsc);
   } else if (disp_size == DISP_SMALL) {
     static lv_coord_t grid_main_col_dsc[] = {LV_GRID_FR(1),
                                              LV_GRID_TEMPLATE_LAST};
@@ -338,7 +416,7 @@ static void restaurant_create(lv_obj_t* parent) {
                                           LV_GRID_CONTENT, /*Button2*/
                                           LV_GRID_TEMPLATE_LAST};
 
-    lv_obj_set_grid_dsc_array(panel1, grid_1_col_dsc, grid_1_row_dsc);
+    // lv_obj_set_grid_dsc_array(panel1, grid_1_col_dsc, grid_1_row_dsc);
 
     static lv_coord_t grid_2_col_dsc[] = {LV_GRID_FR(1), LV_GRID_FR(1),
                                           LV_GRID_TEMPLATE_LAST};

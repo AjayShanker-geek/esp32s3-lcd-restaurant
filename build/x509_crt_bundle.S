@@ -1,4 +1,4 @@
-/* * Data converted from /Users/ajayshanker/Developer/iot/lvgl_demos/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from /Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 .section .rodata.embedded

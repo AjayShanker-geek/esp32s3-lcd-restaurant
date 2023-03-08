@@ -1,4 +1,4 @@
-# Install script for directory: /Users/ajayshanker/Developer/iot/lvgl_demos/components/lvgl__lvgl
+# Install script for directory: /Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/components/lvgl__lvgl
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

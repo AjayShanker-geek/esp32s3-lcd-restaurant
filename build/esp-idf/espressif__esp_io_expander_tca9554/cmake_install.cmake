@@ -1,4 +1,4 @@
-# Install script for directory: /Users/ajayshanker/Developer/iot/lvgl_demos/managed_components/espressif__esp_io_expander_tca9554
+# Install script for directory: /Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/managed_components/espressif__esp_io_expander_tca9554
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
