@@ -39,8 +39,6 @@ void app_main(void) {
             heap_caps_get_total_size(MALLOC_CAP_SPIRAM));
     ESP_LOGI("MEM", "%s", buffer);
 
-    // sprintf("Ajay");
-
     vTaskDelay(pdMS_TO_TICKS(500));
   }
 #endif
