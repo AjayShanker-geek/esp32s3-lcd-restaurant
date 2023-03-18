@@ -1,6 +1,9 @@
 set(LV_DEMO_DIR ../managed_components/lvgl__lvgl/demos)
 file(GLOB_RECURSE LV_DEMOS_SOURCES ${LV_DEMO_DIR}/*.c)
 
+# set(EXTRA_COMPONENT_DIRS $ENV{IDF_PATH}/examples/common_components/protocol_examples_common)
+
+
 # set(UI_PRINTER_DIR ./ui_printer)
 # file(GLOB_RECURSE UI_PRINTER_SOURCES ${UI_PRINTER_DIR}/*.c)
 
@@ -13,6 +16,7 @@ file(GLOB_RECURSE LV_DEMOS_SOURCES ${LV_DEMO_DIR}/*.c)
 
 idf_component_register(
     SRCS "main.c" ${LV_DEMOS_SOURCES}
-    INCLUDE_DIRS "." ${LV_DEMO_DIR})
-
+    INCLUDE_DIRS "." ${LV_DEMO_DIR} )
+# ADD Ajay
+# set(EXTRA_COMPONENT_DIRS $ENV{IDF_PATH}/examples/common_components/protocol_examples_common)
 target_compile_options(${COMPONENT_LIB} PRIVATE -Wno-unused-variable -DLV_LVGL_H_INCLUDE_SIMPLE)

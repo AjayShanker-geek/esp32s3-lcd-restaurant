@@ -17,7 +17,16 @@
 /*********************
  *      DEFINES
  *********************/
-uint32_t selected_tabel = -1;
+#define SEND_BUTTON 7
+#define CANCLE_BUTTON 6
+#define TABLE_1_BUTTON 0
+#define TABLE_2_BUTTON 1
+#define TABLE_3_BUTTON 2
+#define TABLE_4_BUTTON 3
+#define TABLE_5_BUTTON 4
+#define TABLE_6_BUTTON 5
+
+uint32_t selected_table = -1;
 /**********************
  *      TYPEDEFS
  **********************/
@@ -235,12 +244,12 @@ static void event_cb(lv_event_t* e) {
         dsc->type == LV_BTNMATRIX_DRAW_PART_BTN) {
       /*Change the draw descriptor of the 2nd button*/
       dsc->rect_dsc->radius = 0x06;
-      if (dsc->id == 7) {
+      if (dsc->id == SEND_BUTTON) {
         dsc->rect_dsc->bg_color = lv_palette_main(LV_PALETTE_GREEN);
-      } else if (dsc->id == 6) {
+      } else if (dsc->id == CANCLE_BUTTON) {
         dsc->rect_dsc->bg_color = lv_palette_main(LV_PALETTE_RED);
       } else if (lv_btnmatrix_get_selected_btn(obj) == dsc->id &&
-                 dsc->id != 7) {
+                 dsc->id != SEND_BUTTON) {
         dsc->rect_dsc->bg_color = lv_palette_main(LV_PALETTE_LIGHT_GREEN);
         // printf("%i\n", dsc->id);
       } else
@@ -252,7 +261,14 @@ static void event_cb(lv_event_t* e) {
     uint32_t id = lv_btnmatrix_get_selected_btn(obj);
     const char* txt = lv_btnmatrix_get_btn_text(obj, id);
 
-    printf("%s was pressed\n", txt);
+    if (id == CANCLE_BUTTON)
+      selected_table = -1;
+    else if (id != SEND_BUTTON)
+      selected_table = id;
+    else if (selected_table != -1) {
+      printf("%i table was sent!\n", selected_table + 1);
+      selected_table = -1;
+    }
   }
   // if (code == LV_EVENT_DRAW_PART_END) {
   //   lv_obj_draw_part_dsc_t* dsc = lv_event_get_draw_part_dsc(e);

@@ -71,3 +71,4 @@ $<TARGET_FILE:__idf_espressif__esp_lcd_touch_gt1151>
 $<TARGET_FILE:__idf_lvgl__lvgl>
 $<TARGET_FILE:__idf_espressif__esp32_s3_lcd_ev_board>
 $<TARGET_FILE:__idf_main>
+$<TARGET_FILE:__idf_protocol_examples_common>

@@ -3,3 +3,4 @@ source "/Users/ajayshanker/esp/esp-idf/components/esp_app_format/Kconfig.projbui
 source "/Users/ajayshanker/esp/esp-idf/components/esp_rom/Kconfig.projbuild"
 source "/Users/ajayshanker/esp/esp-idf/components/esptool_py/Kconfig.projbuild"
 source "/Users/ajayshanker/esp/esp-idf/components/partition_table/Kconfig.projbuild"
+source "/Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/main/protocol_examples_common/Kconfig.projbuild"

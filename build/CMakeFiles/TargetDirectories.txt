@@ -669,3 +669,10 @@
 /Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/build/esp-idf/main/CMakeFiles/install.dir
 /Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/build/esp-idf/main/CMakeFiles/install/local.dir
 /Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/build/esp-idf/main/CMakeFiles/install/strip.dir
+/Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/build/esp-idf/protocol_examples_common/CMakeFiles/__idf_protocol_examples_common.dir
+/Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/build/esp-idf/protocol_examples_common/CMakeFiles/edit_cache.dir
+/Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/build/esp-idf/protocol_examples_common/CMakeFiles/rebuild_cache.dir
+/Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/build/esp-idf/protocol_examples_common/CMakeFiles/list_install_components.dir
+/Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/build/esp-idf/protocol_examples_common/CMakeFiles/install.dir
+/Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/build/esp-idf/protocol_examples_common/CMakeFiles/install/local.dir
+/Users/ajayshanker/Developer/iot/esp32-lcd-restaurant/build/esp-idf/protocol_examples_common/CMakeFiles/install/strip.dir

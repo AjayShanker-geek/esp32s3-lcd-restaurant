@@ -267,6 +267,8 @@ static void event_cb(lv_event_t* e) {
       selected_table = id;
     else if (selected_table != -1) {
       printf("%i table was sent!\n", selected_table + 1);
+      // msg_id = esp_mqtt_client_publish(client, "/topic/qos1", "data_3", 0, 1, 0);
+      // ESP_LOGI(TAG, "sent publish successful, msg_id=%d", msg_id);
       selected_table = -1;
     }
   }
@@ -306,7 +308,7 @@ static void event_cb(lv_event_t* e) {
 
 static const char* btnm_map[] = {"Table 1", "Table 2", "Table 3", "\n",
                                  "Table 4", "Table 5", "Table 6", "\n",
-                                 "Cancel",  "Send",    ""};
+                                 "Cancel", "Send", ""};
 
 /**
  * Add custom drawer to the button matrix to customize buttons one by one
@@ -347,9 +349,9 @@ static void restaurant_create(lv_obj_t* parent) {
                                              LV_GRID_TEMPLATE_LAST};
 
     /*Create the top panel*/
-    static lv_coord_t grid_1_col_dsc[] = {LV_GRID_CONTENT,      5,
-                                          LV_GRID_CONTENT,      LV_GRID_FR(2),
-                                          LV_GRID_FR(1),        LV_GRID_FR(1),
+    static lv_coord_t grid_1_col_dsc[] = {LV_GRID_CONTENT, 5,
+                                          LV_GRID_CONTENT, LV_GRID_FR(2),
+                                          LV_GRID_FR(1), LV_GRID_FR(1),
                                           LV_GRID_TEMPLATE_LAST};
     static lv_coord_t grid_1_row_dsc[] = {
         LV_GRID_CONTENT, LV_GRID_CONTENT, 10,
@@ -579,9 +581,9 @@ static void profile_create(lv_obj_t* parent) {
                                              LV_GRID_TEMPLATE_LAST};
 
     /*Create the top panel*/
-    static lv_coord_t grid_1_col_dsc[] = {LV_GRID_CONTENT,      5,
-                                          LV_GRID_CONTENT,      LV_GRID_FR(2),
-                                          LV_GRID_FR(1),        LV_GRID_FR(1),
+    static lv_coord_t grid_1_col_dsc[] = {LV_GRID_CONTENT, 5,
+                                          LV_GRID_CONTENT, LV_GRID_FR(2),
+                                          LV_GRID_FR(1), LV_GRID_FR(1),
                                           LV_GRID_TEMPLATE_LAST};
     static lv_coord_t grid_1_row_dsc[] = {
         LV_GRID_CONTENT, LV_GRID_CONTENT, 10,
@@ -1337,10 +1339,10 @@ void shop_create(lv_obj_t* parent) {
 }
 
 static void color_changer_create(lv_obj_t* parent) {
-  static lv_palette_t palette[] = {LV_PALETTE_BLUE,      LV_PALETTE_GREEN,
+  static lv_palette_t palette[] = {LV_PALETTE_BLUE, LV_PALETTE_GREEN,
                                    LV_PALETTE_BLUE_GREY, LV_PALETTE_ORANGE,
-                                   LV_PALETTE_RED,       LV_PALETTE_PURPLE,
-                                   LV_PALETTE_TEAL,      _LV_PALETTE_LAST};
+                                   LV_PALETTE_RED, LV_PALETTE_PURPLE,
+                                   LV_PALETTE_TEAL, _LV_PALETTE_LAST};
 
   lv_obj_t* color_cont = lv_obj_create(parent);
   lv_obj_remove_style_all(color_cont);
@@ -1513,7 +1515,7 @@ static lv_obj_t* create_meter_box(lv_obj_t* parent, const char* title,
                                         LV_GRID_CONTENT, LV_GRID_FR(8),
                                         LV_GRID_TEMPLATE_LAST};
     static lv_coord_t grid_row_dsc[] = {
-        LV_GRID_CONTENT, LV_GRID_FR(1), LV_GRID_CONTENT,      LV_GRID_CONTENT,
+        LV_GRID_CONTENT, LV_GRID_FR(1), LV_GRID_CONTENT, LV_GRID_CONTENT,
         LV_GRID_CONTENT, LV_GRID_FR(1), LV_GRID_TEMPLATE_LAST};
 
     lv_obj_set_grid_dsc_array(cont, grid_col_dsc, grid_row_dsc);
@@ -1729,12 +1731,12 @@ static void chart_event_cb(lv_event_t* e) {
     /*Set the markers' text*/
     if (dsc->part == LV_PART_TICKS && dsc->id == LV_CHART_AXIS_PRIMARY_X) {
       if (lv_chart_get_type(obj) == LV_CHART_TYPE_BAR) {
-        const char* month[] = {"I",   "II",   "III", "IV", "V",  "VI",
-                               "VII", "VIII", "IX",  "X",  "XI", "XII"};
+        const char* month[] = {"I", "II", "III", "IV", "V", "VI",
+                               "VII", "VIII", "IX", "X", "XI", "XII"};
         lv_snprintf(dsc->text, dsc->text_length, "%s", month[dsc->value]);
       } else {
-        const char* month[] = {"Jan",  "Febr", "March", "Apr", "May", "Jun",
-                               "July", "Aug",  "Sept",  "Oct", "Nov", "Dec"};
+        const char* month[] = {"Jan", "Febr", "March", "Apr", "May", "Jun",
+                               "July", "Aug", "Sept", "Oct", "Nov", "Dec"};
         lv_snprintf(dsc->text, dsc->text_length, "%s", month[dsc->value]);
       }
     }
@@ -1853,8 +1855,8 @@ static void shop_chart_event_cb(lv_event_t* e) {
     lv_obj_draw_part_dsc_t* dsc = lv_event_get_param(e);
     /*Set the markers' text*/
     if (dsc->part == LV_PART_TICKS && dsc->id == LV_CHART_AXIS_PRIMARY_X) {
-      const char* month[] = {"Jan",  "Febr", "March", "Apr", "May", "Jun",
-                             "July", "Aug",  "Sept",  "Oct", "Nov", "Dec"};
+      const char* month[] = {"Jan", "Febr", "March", "Apr", "May", "Jun",
+                             "July", "Aug", "Sept", "Oct", "Nov", "Dec"};
       lv_snprintf(dsc->text, dsc->text_length, "%s", month[dsc->value]);
     }
     if (dsc->part == LV_PART_ITEMS) {

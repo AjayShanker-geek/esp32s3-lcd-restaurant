@@ -1,13 +1,18 @@
 {
   "idf.adapterTargetName": "esp32s3",
-  "idf.port": "/dev/cu.usbserial-210",
+  "idf.port": "/dev/cu.usbserial-10",
   "idf.flashType": "UART",
   "files.associations": {
     "*.tex": "latex",
     "__config": "cpp",
     "__locale": "c",
     "system_error": "c",
-    "locale": "c"
+    "locale": "c",
+    "__bit_reference": "c",
+    "bitset": "c",
+    "chrono": "c",
+    "unordered_map": "c",
+    "lv_demos.h": "c"
   },
   "idf.openOcdConfigs": ["board/esp32s3-bridge.cfg"]
 }
