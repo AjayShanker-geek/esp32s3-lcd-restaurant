@@ -7,6 +7,7 @@ cmake_minimum_required(VERSION 3.5)
 # ADD Ajay
 set(EXTRA_COMPONENT_DIRS main/protocol_examples_common)
 
+
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 add_compile_options("-Wno-format")
 project(lvgl_demos)

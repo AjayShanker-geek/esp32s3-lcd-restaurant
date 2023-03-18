@@ -1,4 +1,7 @@
-set(LV_DEMO_DIR ../managed_components/lvgl__lvgl/demos)
+# set(LV_DEMO_DIR ../managed_components/lvgl__lvgl/demos)
+# file(GLOB_RECURSE LV_DEMOS_SOURCES ${LV_DEMO_DIR}/*.c)
+
+set(LV_DEMO_DIR widgets)
 file(GLOB_RECURSE LV_DEMOS_SOURCES ${LV_DEMO_DIR}/*.c)
 
 # set(EXTRA_COMPONENT_DIRS $ENV{IDF_PATH}/examples/common_components/protocol_examples_common)
