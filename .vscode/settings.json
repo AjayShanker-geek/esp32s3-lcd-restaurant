@@ -12,7 +12,8 @@
     "bitset": "c",
     "chrono": "c",
     "unordered_map": "c",
-    "lv_demos.h": "c"
+    "lv_demos.h": "c",
+    "sstream": "c"
   },
   "idf.openOcdConfigs": ["board/esp32s3-bridge.cfg"]
 }

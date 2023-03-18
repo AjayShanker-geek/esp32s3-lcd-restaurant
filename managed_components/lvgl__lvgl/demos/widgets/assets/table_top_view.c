@@ -16901,7 +16901,7 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST
 
 };
 
-const lv_img_dsc_t img_lvgl_logotable_top_view = {
+const lv_img_dsc_t table_top_view = {
     .header.cf = LV_IMG_CF_RGB565A8,
     .header.always_zero = 0,
     .header.reserved = 0,

@@ -22,8 +22,11 @@
 static char *TAG = "app_main";
 
 #define CONFIG_BROKER_URL "mqtt://172.20.10.3"
+esp_mqtt_event_handle_t event;
+esp_mqtt_client_handle_t client;
 
-static void log_error_if_nonzero(const char *message, int error_code) {
+static void
+log_error_if_nonzero(const char *message, int error_code) {
   if (error_code != 0) {
     ESP_LOGE(TAG, "Last error %s: 0x%x", message, error_code);
   }
@@ -39,10 +42,10 @@ static void log_error_if_nonzero(const char *message, int error_code) {
  * @param event_id The id for the received event.
  * @param event_data The data for the event, esp_mqtt_event_handle_t.
  */
-static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data) {
+void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data) {
   ESP_LOGD(TAG, "Event dispatched from event loop base=%s, event_id=%d", base, event_id);
-  esp_mqtt_event_handle_t event = event_data;
-  esp_mqtt_client_handle_t client = event->client;
+  event = event_data;
+  client = event->client;
   int msg_id;
   switch ((esp_mqtt_event_id_t)event_id) {
     case MQTT_EVENT_CONNECTED:
@@ -137,7 +140,7 @@ void app_main(void) {
 
   // ESP_LOGI(TAG, "Display LVGL demo");
   bsp_display_lock(0);
-  lv_demo_widgets(); /* A widgets example */
+  lv_widgets(); /* A widgets example */
 
   bsp_display_unlock();
 
