@@ -31,7 +31,7 @@ extern esp_mqtt_client_handle_t client;
 #define TABLE_6_BUTTON 5
 
 uint32_t selected_table = -1;
-char* msg = "test";
+char* msg = "";
 
 /**********************
  *      TYPEDEFS
@@ -210,7 +210,7 @@ static void event_cb(lv_event_t* e) {
       selected_table = -1;
     else if (id != SEND_BUTTON) {
       selected_table = id;
-      sprintf(msg, "%d", selected_table + 1);
+      sprintf(msg, "{ \"data\": \"%d\" }", selected_table + 1);
     } else if (selected_table != -1) {
       printf("%i table was sent!\n", selected_table + 1);
       esp_mqtt_client_publish(client, "/topic/table", msg, 0, 0, 0);
