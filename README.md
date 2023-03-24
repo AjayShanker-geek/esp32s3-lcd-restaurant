@@ -6,8 +6,8 @@ An example used to run LVGL's demos on ESP32-S3-LCD-EV-Board. Internal demos inc
 
 ## Dispenser system
 
-1 x PWM: 12v Motor driver
-3 x GPIO: Limit swithc
+- 1 x PWM: 12v Motor driver
+- 3 x GPIO: Limit switch
 
 ```c
 
