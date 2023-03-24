@@ -2,7 +2,7 @@
 
 ## Using LVGL
 
-An example used to run LVGL's demos on ESP32-S3-LCD-EV-Board. Internal demos include music player, widgets, stress and benchmark. What's more, the printer and tuner are generated from [Squareline](https://squareline.io/).
+LVGL on ESP32-S3-LCD-EV-Board
 
 ## Dispenser system
 
