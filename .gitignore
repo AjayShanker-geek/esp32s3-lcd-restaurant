@@ -1,2 +1,3 @@
-build/*
-managed_component/espressif*
+build/
+managed_component/
+.vscode
